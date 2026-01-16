@@ -2,9 +2,12 @@
 
 **MCP server for Google Workspace integration with Claude AI**
 
+[![npm version](https://img.shields.io/npm/v/auralis-google.svg)](https://www.npmjs.com/package/auralis-google)
 ![Tools](https://img.shields.io/badge/tools-22-blue)
 ![Google APIs](https://img.shields.io/badge/Google%20APIs-5-red)
 ![License](https://img.shields.io/badge/license-MIT-green)
+
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/template/auralis-google?referralCode=auralis)
 
 Auralis Google provides seamless integration between Claude AI and Google Workspace services through the Model Context Protocol (MCP). Access Gmail, Calendar, Drive, Docs, and Sheets directly from Claude.
 
