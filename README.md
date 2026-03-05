@@ -238,7 +238,7 @@ Google released the [Google Workspace CLI](https://github.com/googleworkspace/cl
 | | **Auralis Google** | **Google Workspace CLI** |
 |---|---|---|
 | **Focus** | Production MCP server | CLI tool + MCP server |
-| **Maturity** | Stable, months in production | v0.5.0, days old |
+| **Maturity** | Stable, production-tested | Pre-v1.0, rapid iteration |
 | **Language** | TypeScript (hackable) | Rust (binary, not modifiable) |
 | **Transport** | HTTP Streamable + Stdio | Stdio only |
 | **Remote deployment** | ✅ Railway, Docker, any cloud | ❌ Local only |
@@ -257,7 +257,7 @@ Auralis Google runs on Railway, Docker, or any cloud provider. Your AI assistant
 
 **2. Production-stable**
 
-Months of real-world usage across multiple accounts. No auth loops, no token refresh issues, no scope conflicts. `gws` has [58 open issues](https://github.com/googleworkspace/cli/issues) in its first week, many related to authentication.
+Real-world usage across multiple accounts. No auth loops, no token refresh issues, no scope conflicts. `gws` is under active development with [open auth-related issues](https://github.com/googleworkspace/cli/issues).
 
 **3. Right-sized tool surface**
 
