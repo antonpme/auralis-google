@@ -3,7 +3,7 @@
 **MCP server for Google Workspace integration with Claude AI**
 
 [![npm version](https://img.shields.io/npm/v/auralis-google.svg)](https://www.npmjs.com/package/auralis-google)
-![Tools](https://img.shields.io/badge/tools-22-blue)
+![Tools](https://img.shields.io/badge/tools-31-blue)
 ![Google APIs](https://img.shields.io/badge/Google%20APIs-5-red)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
@@ -228,6 +228,63 @@ Read all data from my Budget spreadsheet
 ```
 Send an email to john@example.com with subject "Meeting Notes" and the summary of our discussion
 ```
+
+## Comparison with Google Workspace CLI
+
+Google released the [Google Workspace CLI](https://github.com/googleworkspace/cli) (`gws`) in March 2026 — a Rust-based CLI + MCP server that dynamically discovers all Google APIs. It's an impressive project. Here's how it compares:
+
+### At a Glance
+
+| | **Auralis Google** | **Google Workspace CLI** |
+|---|---|---|
+| **Focus** | Production MCP server | CLI tool + MCP server |
+| **Maturity** | Stable, months in production | v0.5.0, days old |
+| **Language** | TypeScript (hackable) | Rust (binary, not modifiable) |
+| **Transport** | HTTP Streamable + Stdio | Stdio only |
+| **Remote deployment** | ✅ Railway, Docker, any cloud | ❌ Local only |
+| **Google services** | 5 (Gmail, Calendar, Drive, Docs, Sheets) | 26+ (auto-discovered) |
+| **MCP tools** | 31 (focused) | 200-400 full / ~26 compact |
+| **Multi-account** | ✅ Stable | ⚠️ Documented, auth issues |
+| **Custom OAuth app** | ✅ Your own GCP project | ✅ Your own GCP project |
+| **Scope control** | 5 scopes, always within limits | 85+ recommended, hits unverified app caps |
+| **Official Google product** | No | No ("not officially supported") |
+
+### Why Auralis Google
+
+**1. Remote-first architecture**
+
+Auralis Google runs on Railway, Docker, or any cloud provider. Your AI assistant accesses Google APIs from anywhere — not just your local machine. `gws` MCP mode only works over stdio (local process).
+
+**2. Production-stable**
+
+Months of real-world usage across multiple accounts. No auth loops, no token refresh issues, no scope conflicts. `gws` has [58 open issues](https://github.com/googleworkspace/cli/issues) in its first week, many related to authentication.
+
+**3. Right-sized tool surface**
+
+31 purpose-built tools that cover the core Google Workspace workflow. Your AI doesn't burn context tokens loading 200+ tool definitions. Each tool has clear input schemas with Zod validation.
+
+**4. Hackable**
+
+TypeScript source you can read, modify, and extend. Need a custom tool? Add it in 20 lines. Rust binaries don't offer that flexibility.
+
+### When to consider gws instead
+
+- You need Google services beyond the core 5 (Slides, Forms, Tasks, Meet, Chat, Keep, Admin)
+- You want CLI access to Google APIs (not just MCP)
+- You prefer a single tool for everything and don't need remote deployment
+- You're comfortable with pre-v1.0 software and can work through auth issues
+
+### Summary
+
+| Scenario | Recommendation |
+|----------|---------------|
+| Production MCP server for AI assistants | **Auralis Google** |
+| Local CLI for quick Google API calls | **gws** |
+| Need Slides, Forms, Tasks, or Meet | **gws** (or add to Auralis Google) |
+| Multi-machine / cloud deployment | **Auralis Google** |
+| Want to modify or extend the code | **Auralis Google** |
+
+> **Our take:** Use Auralis Google for production AI workflows. Keep an eye on `gws` as it matures — it could become a great complement for services outside the core 5.
 
 ## Railway Deployment
 
